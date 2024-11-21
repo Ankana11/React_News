@@ -210,26 +210,34 @@ export class News extends Component {
 constructor(){
   super();
   this.state= {
-articles: this.articles,
+articles: [],
 loading: false
 
   }
+}
+
+async componentDidMount(){
+  let url= "https://newsapi.org/v2/top-headlines?country=us&apiKey=e57231eade29412a843937296b240cb2"
+  let data = await fetch(url)
+  let persedata = await data.json()
+  console.log(persedata);
+  this.setState({articles: persedata.articles})
 }
 
   render() {
     return (
       <div className='container my-3'>
 <h2>Todays Top- Headlines</h2>
+
 <div className="row mt-3">
-  <div className="col-md-4">
-  <NewsItem title="my title" description="my desc"/>
+{this.state.articles.map((element)=>{
+ return <div className="col-md-4 my-2" key={element.url}>
+  <NewsItem   title={element.title ? element.title.slice(0, 60) : "No title available"} description={element.description ? element.description.slice(0, 100) : "No description available"}  imageurl={!element.urlToImage ? "https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2Fc95a2e5d-7819-4ee2-9baf-eda69718903b.jpg?source=next-barrier-page" : element.urlToImage}newsurl={element.url} />
   </div>
-  <div className="col-md-4">
-  <NewsItem title="my title" description="my desc"/>
-  </div>
-  <div className="col-md-4">
-  <NewsItem title="my title" description="my desc"/>
-  </div>
+})}
+  
+ 
+ 
   
      
       </div>
