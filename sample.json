@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
-
-export class News extends Component {
-  articles=  [
+{
+  "status": "ok",
+  "totalResults": 38,
+  "articles": [
     {
       "source": { "id": null, "name": "BBC News" },
       "author": null,
@@ -207,35 +206,4 @@ export class News extends Component {
       "content": "We'll know in a little while.\r\nAI-chip colossus Nvidia  (NVDA)  is scheduled to report fiscal-third-quarter earnings on Nov. 20 and the whole tech world is watching. \r\nThe $3.6 trillion company comma… [+5579 chars]"
     }
   ]
-constructor(){
-  super();
-  this.state= {
-articles: this.articles,
-loading: false
-
-  }
 }
-
-  render() {
-    return (
-      <div className='container my-3'>
-<h2>Todays Top- Headlines</h2>
-<div className="row mt-3">
-  <div className="col-md-4">
-  <NewsItem title="my title" description="my desc"/>
-  </div>
-  <div className="col-md-4">
-  <NewsItem title="my title" description="my desc"/>
-  </div>
-  <div className="col-md-4">
-  <NewsItem title="my title" description="my desc"/>
-  </div>
-  
-     
-      </div>
-      </div>
-    )
-  }
-}
-
-export default News
