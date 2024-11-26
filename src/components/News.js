@@ -1,273 +1,98 @@
-import React, { Component } from 'react'
-import NewsItem from './NewsItem'
+import React, { Component } from 'react';
+import NewsItem from './NewsItem';
+import PropTypes from 'prop-types';
 
 export class News extends Component {
-  articles=  [
-    {
-      "source": { "id": null, "name": "BBC News" },
-      "author": null,
-      "title": "Hong Kong mogul Jimmy Lai testifies for first time - BBC.com",
-      "description": "Lai, one of the most influential pro-democracy figures in Hong Kong, is accused of colluding with foreign forces.",
-      "url": "https://www.bbc.com/news/articles/c8xpwvg9z5no",
-      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/c688/live/09010fe0-a70e-11ef-9ba1-054d4a95be8f.jpg",
-      "publishedAt": "2024-11-20T09:19:25Z",
-      "content": "Jimmy Lai, Apple Daily founder, arrives at the Court of Final Appeal ahead a bail hearing on February 9, 2021\r\nJimmy Lai, one of Hong Kong's most influential pro-democracy figures, has testified in c… [+4370 chars]"
-    },
-    {
-      "source": { "id": "associated-press", "name": "Associated Press" },
-      "author": "HALLIE GOLDEN, LISA BAUMANN",
-      "title": "'Bomb cyclone' kills 1 and knocks out power to over half a million homes across northwest US - The Associated Press",
-      "description": "A major storm was sweeping across the northwest U.S., battering the region with strong winds and rain. It caused widespread power outages and downed trees that killed at least one person. Falling trees struck homes and littered roadways across northwest Washi…",
-      "url": "https://apnews.com/article/california-oregon-washington-storm-power-outages-aadbd4863dd989189d31c1c2187b5025",
-      "urlToImage": "https://dims.apnews.com/dims4/default/d05af59/2147483647/strip/true/crop/3000x1688+0+156/resize/1440x810!/quality/90/?url=https%3A%2F%2Fassets.apnews.com%2F01%2F9f%2F8aa44effa1f6ddf0b2d17e238ab0%2Facc424e59bb4426d8e36723355eb2650",
-      "publishedAt": "2024-11-20T07:53:00Z",
-      "content": "SEATTLE (AP) A major storm swept across the northwest U.S., battering the region with strong winds and rain, causing widespread power outages and downing trees that killed at least one person.\r\nThe W… [+3285 chars]"
-    },
-    {
-      "source": { "id": "reuters", "name": "Reuters" },
-      "author": "Eduardo Baptista, Lisandra Paraguassu",
-      "title": "China's Xi visits Brasilia to cap tour flexing diplomatic clout - Reuters",
-      "description": "His visit caps a diplomatic blitz across South America that has shown Beijing's growing clout in the region where it filled a gap left by the U.S. presidential transition.",
-      "url": "https://www.reuters.com/world/china/chinas-xi-visits-brasilia-cap-tour-flexing-diplomatic-clout-2024-11-20/",
-      "urlToImage": "https://www.reuters.com/resizer/v2/CY44ZDLKFJPHZCSNCLGUSAXRIU.jpg?auth=86de6515bab6ac54fa9abc27e450b613a1617ef39a519722bb26a0e110fc14ef&height=1005&width=1920&quality=80&smart=true",
-      "publishedAt": "2024-11-20T06:41:00Z",
-      "content": null
-    },
-    {
-      "source": { "id": null, "name": "Suntimes.com" },
-      "author": "Georgia Nicols",
-      "title": "Horoscope for Wednesday, November 20, 2024 - Chicago Sun-Times",
-      "description": null,
-      "url": "https://chicago.suntimes.com/horoscopes/2024/11/20/horoscopes-today-wednesday-november-20-2024",
-      "urlToImage": "https://cst.brightspotcdn.com/dims4/default/2145dbd/2147483647/strip/true/crop/870x497+0+67/resize/1461x834!/quality/90/?url=https%3A%2F%2Fchorus-production-cst-web.s3.us-east-1.amazonaws.com%2Fbrightspot%2Fac%2Ffd%2F790f04b15195427014757adc0272%2Fgeorgia-nicols.jpg",
-      "publishedAt": "2024-11-20T06:01:33Z",
-      "content": "Moon Alert\r\nAvoid shopping or making important decisions from 5 to 8:15 a.m. Chicago time. After that, the moon moves from Cancer into Leo.\r\nAries (March 21-April 19)\r\nAvoid power struggles with roma… [+3827 chars]"
-    },
-    {
-      "source": { "id": null, "name": "BBC News" },
-      "author": null,
-      "title": "Cable TV networks MSNBC and CNBC to be spun off by Comcast - BBC.com",
-      "description": "Channels including USA, Oxygen, E! and Syfy will also be moved to the new media company.",
-      "url": "https://www.bbc.com/news/articles/cn42p1m3jmno",
-      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/b5e5/live/015451c0-a6fb-11ef-8d33-55c697fbd56f.jpg",
-      "publishedAt": "2024-11-20T05:58:06Z",
-      "content": "US media giant Comcast is set to spin off its NBCUniversal cable television arm, as the industry continues to struggle with the emergence of streaming giants like Netflix and Amazon Prime.\r\nThe BBC u… [+1732 chars]"
-    },
-    {
-      "source": { "id": null, "name": "CBS Sports" },
-      "author": "",
-      "title": "Nuggets' Russell Westbrook becomes first player in NBA history to reach 200 triple-doubles - CBS Sports",
-      "description": "Westbrook was the second player ever to average a triple-double for a full season",
-      "url": "https://www.cbssports.com/nba/news/nuggets-russell-westbrook-becomes-first-player-in-nba-history-to-reach-200-triple-doubles/",
-      "urlToImage": "https://sportshub.cbsistatic.com/i/r/2024/11/20/68606096-a139-4f19-a81a-83a24eb29f74/thumbnail/1200x675/fd035fa063bf4fa3370c268bc6a57734/russ.png",
-      "publishedAt": "2024-11-20T05:15:35Z",
-      "content": "Russell Westbrook owns just about every meaningful record relating to triple-doubles in NBA history. In 2021, he broke Oscar Robertson's career record of 181. He was the first player since Robertson … [+2207 chars]"
-    },
-    {
-      "source": {
-        "id": "the-wall-street-journal",
-        "name": "The Wall Street Journal"
-      },
-      "author": "The Wall Street Journal",
-      "title": "North Korea Sent a Mystery Man to Lead Its Troops Fighting Ukraine - The Wall Street Journal",
-      "description": null,
-      "url": "https://www.wsj.com/world/north-korea-sent-a-mystery-man-to-lead-its-troops-fighting-ukraine-b325e562",
-      "urlToImage": null,
-      "publishedAt": "2024-11-20T05:10:00Z",
-      "content": null
-    },
-    {
-      "source": { "id": null, "name": "CNBC" },
-      "author": "Melissa Repko",
-      "title": "Target will report earnings before the bell. Here's what to expect - CNBC",
-      "description": "Target has cut prices on thousands of items, including milk, diapers and toys, to try to attract discerning shoppers.",
-      "url": "https://www.cnbc.com/2024/11/20/target-tgt-q3-2024-earnings.html",
-      "urlToImage": "https://image.cnbcfm.com/api/v1/image/108064305-1731935494628-gettyimages-2184732616-PWeaver-241117-09.jpeg?v=1731935645&w=1920&h=1080",
-      "publishedAt": "2024-11-20T05:01:01Z",
-      "content": "Target will report fiscal third-quarter earnings on Wednesday and offer the latest clues on how the holiday season is shaping up for retailers, as the company tries to woo deal-hunting shoppers.\r\nHer… [+1425 chars]"
-    },
-    {
-      "source": { "id": null, "name": "BBC News" },
-      "author": null,
-      "title": "Biden agrees to give Ukraine anti-personnel mines - BBC.com",
-      "description": "A US official tells the BBC the mines will be given soon, as Russia advances steadily in the east.",
-      "url": "https://www.bbc.com/news/articles/cx2d1lj3nwqo",
-      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/4ff1/live/ef05d140-a6fc-11ef-bea5-39621956f458.png",
-      "publishedAt": "2024-11-20T04:49:48Z",
-      "content": "US President Joe Biden has agreed to give Ukraine anti-personnel land mines, a US defence official told the BBC, a move seen as an attempt to slow Russian troops who have been steadily advancing in U… [+3396 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Internet" },
-      "author": "The Hacker News",
-      "title": "Apple Releases Urgent Updates to Patch Actively Exploited Zero-Day Vulnerabilities - The Hacker News",
-      "description": "Apple issues security updates for iOS, macOS, and Safari to fix two active zero-day exploits.",
-      "url": "https://thehackernews.com/2024/11/apple-releases-urgent-updates-to-patch.html",
-      "urlToImage": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjD5XLqCBlMlu8dFR_aRirjkb36_6qyPuVt9k8sWVCOhAmpUDSOkaZBL5xpMIwhLpofolfB4rMs0Ob8eR8WmCZa9WkMdi7EyYwqyOG15Liq-DYmbaEkAEtCJcj0PDbn5d2luTjiVK4nx8DBVcO-CwpGWS6q0lZ_Plg2paBqC_FiID2Ikm5TC6qLEqxGonmO/s728-rw-e365/apple-pdates.png",
-      "publishedAt": "2024-11-20T04:37:00Z",
-      "content": "Apple has released security updates for iOS, iPadOS, macOS, visionOS, and its Safari web browser to address two zero-day flaws that have come under active exploitation in the wild.\r\nThe flaws are lis… [+2199 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Page Six" },
-      "author": "Sara Whitman",
-      "title": "Jay Cutler engaged to Samantha Robertson 2 years after Kristin Cavallari divorce: report - Page Six",
-      "description": "The former Chicago Bears quarterback went public with Robertson in September 2023.",
-      "url": "https://pagesix.com/2024/11/19/celebrity-news/jay-cutler-engaged-to-samantha-robertson-2-years-after-kristin-cavallari-divorce/",
-      "urlToImage": "https://pagesix.com/wp-content/uploads/sites/3/2024/11/jay-cutler-engaged-samantha-robertson.jpg?quality=75&strip=all&w=1024",
-      "publishedAt": "2024-11-20T03:47:00Z",
-      "content": "Jay Cutler is engaged to Samantha Robertson, People reports.\r\nMultiple sources close to the couple told the outlet that the former Chicago Bears quarterback took the next step in his relationship wit… [+2964 chars]"
-    },
-    {
-      "source": { "id": "cnn", "name": "CNN" },
-      "author": "Holly Yan",
-      "title": "A mother’s agony: What Allyson Phillips has endured during the trial of the man accused of killing her daughter, Laken Riley - Yahoo! Voices",
-      "description": "For Laken Riley’s mother, the anguish of losing a child in a gruesome attack is amplified by the horror of hearing details about the final minutes of her life.",
-      "url": "https://www.cnn.com/2024/11/19/us/laken-riley-family-jose-ibarra-trial/index.html",
-      "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/ap24320580750423.jpg?c=16x9&q=w_800,c_fill",
-      "publishedAt": "2024-11-20T03:04:00Z",
-      "content": "For Laken Rileys mother, the anguish of losing a child in a gruesome attack is amplified by the horror of hearing details about the final minutes of her daughters life.\r\nBut a relentless pursuit of j… [+5088 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Financial Times" },
-      "author": "Alex Rogers, Antoine Gara, Colby Smith, Arash Massoudi, James Fontanella-Khan",
-      "title": "Marc Rowan emerges as a top contender to be Donald Trump’s Treasury secretary - Financial Times",
-      "description": "Private equity billionaire is considering job and is set to meet president-elect on Wednesday",
-      "url": "https://www.ft.com/content/cbe0e1a1-c6fa-49f0-9a8a-47499b9ad0fb",
-      "urlToImage": "https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2F6e07b6e5-3ab4-49b8-a890-816162deed32.jpg?source=next-barrier-page",
-      "publishedAt": "2024-11-20T02:34:10Z",
-      "content": "The new FT Digital Edition: todays FT, cover to cover on any device. This subscription does not include access to ft.com or the FT App.\r\n<ul><li></li>Global news &amp; analysis<li></li>Expert opinion… [+2640 chars]"
-    },
-    {
-      "source": { "id": "abc-news", "name": "ABC News" },
-      "author": "ABC News",
-      "title": "Gaetz sent over $10K in Venmo payments to 2 women who testified in House probe, records suggest - ABC News",
-      "description": null,
-      "url": "https://abcnews.go.com/US/gaetz-10k-venmo-payments-2-women-testified-house/story?id\\\\u003d116019367",
-      "urlToImage": null,
-      "publishedAt": "2024-11-20T02:33:43Z",
-      "content": null
-    },
-    {
-      "source": { "id": "cnn", "name": "CNN" },
-      "author": "Kristen Holmes, Kaitlan Collins, John Towfighi",
-      "title": "Trump names Linda McMahon as his pick for Education secretary - CNN",
-      "description": "President-elect Donald Trump has named his transition co-chair Linda McMahon as his pick to serve as the next secretary of the Department of Education.",
-      "url": "https://www.cnn.com/2024/11/19/politics/linda-mcmahon-education-secretary-trump/index.html",
-      "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/linda-mcmahon-2024-07-18t232657z-1175398264-hp1ek7i1t4ur7-rtrmadp-3-usa-election-republicans-convention.jpg?c=16x9&q=w_800,c_fill",
-      "publishedAt": "2024-11-20T02:21:00Z",
-      "content": "President-elect Donald Trump has named his transition co-chair Linda McMahon as his pick to serve as the next secretary of the Department of Education.\r\nThe decision, which Trump announced Tuesday ni… [+2198 chars]"
-    },
-    {
-      "source": { "id": null, "name": "New York Post" },
-      "author": "Christian Arnold",
-      "title": "Todd McShay torches Woody Johnson with Jets in disarray after Joe Douglas firing - New York Post ",
-      "description": "Todd McShay tore into Jets owner Woody Johnson on Tuesday after Gang Green axed general manager Joe Douglas.",
-      "url": "https://nypost.com/2024/11/19/sports/todd-mcshay-torches-woody-johnson-with-jets-in-disarray/",
-      "urlToImage": "https://nypost.com/wp-content/uploads/sites/2/2024/11/newspress-collage-46zuulmw6-1732066883851.jpg?quality=75&strip=all&1732049530&w=1024",
-      "publishedAt": "2024-11-20T02:12:00Z",
-      "content": "Todd McShay tore into Jets owner Woody Johnson on Tuesday after Gang Green axed general manager Joe Douglas. \r\nThe host of The McShay Show labeled Johnson as being among the worst owners in the Natio… [+1724 chars]"
-    },
-    {
-      "source": { "id": "politico", "name": "Politico" },
-      "author": "Meridith McGraw, Natalie Allison",
-      "title": "Donald and Elon can’t get enough of each other. - POLITICO",
-      "description": "“Elon is probably the only other man in the world who can truly relate to President Trump,” said one person who’s watched them interact.",
-      "url": "https://www.politico.com/news/2024/11/19/trump-musk-friendship-influence-00190517",
-      "urlToImage": "https://static.politico.com/c5/d2/7122005848e78360e0b4e416f4f2/trump-spacex-53118.jpg",
-      "publishedAt": "2024-11-20T01:58:02Z",
-      "content": "Trump brought an entourage of aides and lawmakers, including Sen. Bill Hagerty (R-Tenn.), a top contender for Treasury secretary, to the launch. The president-elect was warmly greeted with a hug from… [+6529 chars]"
-    },
-    {
-      "source": { "id": null, "name": "BBC News" },
-      "author": null,
-      "title": "Republican moves to bar trans colleague from women's bathrooms - BBC.com",
-      "description": "The measure is introduced just weeks after Sarah McBride became the first-ever openly transgender lawmaker elected to the House.",
-      "url": "https://www.bbc.com/news/articles/cly2pknez94o",
-      "urlToImage": "https://ichef.bbci.co.uk/news/1024/branded_news/8a25/live/00d4a7d0-a6b6-11ef-a95c-3b8b228be882.jpg",
-      "publishedAt": "2024-11-20T01:20:42Z",
-      "content": "A Republican congresswoman has introduced a bill to ban transgender women from using female bathrooms in the US Capitol, just weeks after the first-ever openly transgender lawmaker was elected to the… [+2642 chars]"
-    },
-    {
-      "source": { "id": null, "name": "Space.com" },
-      "author": "Robert Lea",
-      "title": "'Mind-blowing' dark energy instrument results show Einstein was right about gravity — again - Space.com",
-      "description": "\"Studying the rate at which galaxies formed lets us directly test our theories and, so far, we’re lining up with what general relativity predicts at cosmological scales.\"",
-      "url": "https://www.space.com/desi-einstein-gravity-dark-energy",
-      "urlToImage": "https://cdn.mos.cms.futurecdn.net/q5gWeFvQRDqThzoaNwaXSg-1200-80.png",
-      "publishedAt": "2024-11-20T01:02:04Z",
-      "content": "General relativity has passed one of its most precise tests ever thanks to observations of the past 11 billion years of cosmic evolution collected by the Dark Energy Spectroscopic Instrument, or DESI… [+6442 chars]"
-    },
-    {
-      "source": { "id": null, "name": "TheStreet" },
-      "author": "Rob Lenihan",
-      "title": "Analysts update Nvidia stock price target ahead of earnings - Yahoo Finance",
-      "description": "This is what could happen next to Nvidia shares.",
-      "url": "https://www.thestreet.com/investing/stocks/analysts-update-nvidia-stock-price-target-ahead-of-earnings",
-      "urlToImage": "https://www.thestreet.com/.image/ar_1.91%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cg_faces:center%2Cq_auto:good%2Cw_1200/MjA4OTM1OTQyMDcxNzg5NDEy/nvidia-kl_4.jpg",
-      "publishedAt": "2024-11-20T00:47:00Z",
-      "content": "We'll know in a little while.\r\nAI-chip colossus Nvidia  (NVDA)  is scheduled to report fiscal-third-quarter earnings on Nov. 20 and the whole tech world is watching. \r\nThe $3.6 trillion company comma… [+5579 chars]"
-    }
-  ]
-constructor(){
-  super();
-  this.state= {
-articles: [],
-loading: false
+  static defaultProps = {
+    category: 'general',
+  };
 
+  static propTypes = {
+    category: PropTypes.string,
+  };
+
+  constructor() {
+    super();
+    this.state = {
+      articles: [],
+      loading: false,
+      page: 1,
+    };
   }
-}
 
-async componentDidMount(){
-  let url= "https://newsapi.org/v2/top-headlines?country=us&apiKey=e57231eade29412a843937296b240cb2"
-  let data = await fetch(url)
-  let persedata = await data.json()
-  console.log(persedata);
-  this.setState({articles: persedata.articles})
-}
+  async componentDidMount() {
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=e57231eade29412a843937296b240cb2`;
+    let data = await fetch(url);
+    let persedata = await data.json();
+    console.log(persedata);
+    this.setState({ articles: persedata.articles });
+  }
+  
 
-handlenext= async()=>{
-console.log("click on next");
-let url= `https://newsapi.org/v2/top-headlines?country=us&apiKey=e57231eade29412a843937296b240cb2&page=${this.state.page + 1}`
-let data = await fetch(url)
-let persedata = await data.json()
-console.log(persedata);
-this.setState({
-page: this.state.page + 1,
-articles: persedata.articles
+  handlenext = async () => {
+    console.log("click on next");
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=e57231eade29412a843937296b240cb2&page=${this.state.page + 1}`;
+    let data = await fetch(url);
+    let persedata = await data.json();
+    console.log(persedata);
+    this.setState({
+      page: this.state.page + 1,
+      articles: persedata.articles,
+    });
+  };
 
-})
-}
+  handleprev = async () => {
+    console.log("click on previous");
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=e57231eade29412a843937296b240cb2&page=${this.state.page - 1}`;
+    let data = await fetch(url);
+    let persedata = await data.json();
+    console.log(persedata);
+    this.setState({
+      page: this.state.page - 1,
+      articles: persedata.articles,
+    });
+  };
 
-handleprev= async()=>{
-  console.log("click on next");
-  let url= `https://newsapi.org/v2/top-headlines?country=us&apiKey=e57231eade29412a843937296b240cb2&page=${this.state.page - 1}`
-  let data = await fetch(url)
-  let persedata = await data.json()
-  console.log(persedata);
-  this.setState({
-  page: this.state.page - 1,
-  articles: persedata.articles
-  })
-}
   render() {
     return (
       <div className='container my-3'>
-<h2>Todays Top- Headlines</h2>
+        <h2>Today's Top Headlines</h2>
 
-<div className="row mt-3">
-{this.state.articles.map((element)=>{
- return <div className="col-md-4 my-2" key={element.url}>
-  <NewsItem   title={element.title ? element.title.slice(0, 60) : "No title available"} description={element.description ? element.description.slice(0, 100) : "No description available"}  imageurl={!element.urlToImage ? "https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2Fc95a2e5d-7819-4ee2-9baf-eda69718903b.jpg?source=next-barrier-page" : element.urlToImage}newsurl={element.url} />
-  </div>
+        <div className="row mt-3">
+          {this.state.articles.map((element) => {
+            return (
+              <div className="col-md-4 my-2" key={element.url}>
+                <NewsItem
+                  title={element.title ? element.title.slice(0, 60) : "No title available"}
+                  description={element.description ? element.description.slice(0, 100) : "No description available"}
+                  imageurl={element.urlToImage || "https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fd1e00ek4ebabms.cloudfront.net%2Fproduction%2Fc95a2e5d-7819-4ee2-9baf-eda69718903b.jpg?source=next-barrier-page"}
+                  newsurl={element.url} author={element.author} date={element.publishedAt} source={element.source.name}
+                />
+              </div>
+            );
+          })}
+        </div>
 
-})} 
+        <div className="container d-flex justify-content-between my-3">
+          <button
+            disabled={this.state.page <= 1}
+            type="button"
+            className="btn btn-dark"
+            onClick={this.handleprev}
+          >
+            &larr; Previous
+          </button>
+          <button
+            type="button"
+            className="btn btn-dark"
+            onClick={this.handlenext}
+          >
+            Next &rarr;
+          </button>
+        </div>
       </div>
-     <div className="container d-flex justify-content-between my-3">
-     <button disabled={this.state.page<=1} type="button"  className="btn btn-dark" onClick={this.handleprev}>&larr;Previous</button>
-     <button type="button"  className="btn btn-dark" onClick={this.handlenext}>Next&rarr;</button>
-     </div>
-      </div>
-    )
+    );
   }
 }
 
-export default News
+export default News;
