@@ -7,7 +7,7 @@ export class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand-lg bg-dark navber-dark ">
+        <nav className="navbar navbar-expand-lg bg-dark navber-dark fixed-top">
   <div className="container-fluid">
     <Link className="navbar-brand text-white" to="/">Todays News</Link>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
